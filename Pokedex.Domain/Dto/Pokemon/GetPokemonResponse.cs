@@ -10,7 +10,7 @@ namespace Pokedex.Domain.Dto.Pokemon
     {
         public int Number { get; set; }
         public string Name {  get; set; }
-        public string type1 { get; set; }
-        public string type2 { get; set; }
+        public string Type1 { get; set; }
+        public string Type2 { get; set; }
     }
 }

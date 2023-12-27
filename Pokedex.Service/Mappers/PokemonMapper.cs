@@ -1,26 +1,18 @@
 ﻿using Pokedex.Domain.Dto.Pokemon;
 using Pokedex.Domain.Model;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Pokedex.Service.Mappers
 {
     public class PokemonMapper
     {
-        public static GetPokemonResponse EntityToGetResponse(Pokemon pokemon)
+        public static GetPokemonResponse? EntityToGetResponse(Pokemon pokemon)
         {
-            if (pokemon == null)
-                return null;
-
-            return new GetPokemonResponse
+            return pokemon == null ? null : new GetPokemonResponse
             {
                 Number = pokemon.Number,
                 Name = pokemon.Name,
-                type1 = pokemon.Type1?.Name,
-                type2 = pokemon.Type2?.Name
+                Type1 = pokemon.Type1?.Name,
+                Type2 = pokemon.Type2?.Name
             };
         }
 
@@ -31,14 +23,9 @@ namespace Pokedex.Service.Mappers
             pokemon.Type2 = type2;
         }
 
-        public static UpdatePokemonResponse EntityToUpdateResponse(Pokemon pokemon)
+        public static UpdatePokemonResponse? EntityToUpdateResponse(Pokemon pokemon)
         {
-            if (pokemon == null)
-            {
-                return null;
-            }
-
-            return new UpdatePokemonResponse
+            return pokemon == null ? null : new UpdatePokemonResponse
             {
                 Number = pokemon.Number,
                 Name = pokemon.Name,
@@ -47,14 +34,9 @@ namespace Pokedex.Service.Mappers
             };
         }
 
-        public static Pokemon CreateRequestToEntity(CreatePokemonRequest createRequest, Domain.Model.Type type1, Domain.Model.Type? type2)
+        public static Pokemon? CreateRequestToEntity(CreatePokemonRequest createRequest, Domain.Model.Type type1, Domain.Model.Type? type2)
         {
-            if (createRequest == null)
-            {
-                return null;
-            }
-
-            return new Pokemon
+            return createRequest == null ? null : new Pokemon
             {
                 Number = createRequest.Number,
                 Name = createRequest.Name,
@@ -63,14 +45,9 @@ namespace Pokedex.Service.Mappers
             };
         }
 
-        public static CreatePokemonResponse EntityToCreateResponse(Pokemon pokemon)
+        public static CreatePokemonResponse? EntityToCreateResponse(Pokemon pokemon)
         {
-            if (pokemon == null)
-            {
-                return null;
-            }
-
-            return new CreatePokemonResponse
+            return pokemon == null ? null : new CreatePokemonResponse
             {
                 Number = pokemon.Number,
                 Name = pokemon.Name,
